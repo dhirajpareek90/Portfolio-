@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhiraj Pareek | Portfolio</title>
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #000814;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #000814;
+            border-bottom: 1px solid #001d3d;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #name {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        #tabs {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        #tabs a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: inline-block;
+        }
+
+        #tabs a:hover {
+            color: #ffc300;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid #001d3d;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Pure CSS Typing Effect */
+        .typing-container {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .typing-text {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #ffd60a;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ffc300;
+            width: 0;
+            animation: 
+                typeAndErase 6s steps(21) infinite,
+                blinkCursor 0.75s step-end infinite;
+        }
+
+        @keyframes typeAndErase {
+            0% { width: 0; }
+            40%, 60% { width: 21ch; } /* 21ch equals length of "Hi, I'm Dhiraj Pareek" */
+            100% { width: 0; }
+        }
+
+        @keyframes blinkCursor {
+            from, to { border-color: transparent; }
+            50% { border-color: #ffc300; }
+        }
+
+        .hero-description {
+            color: #a0aec0;
+            font-size: 1.1rem;
+            max-width: 500px;
+        }
+
+        /* Hero Image Container */
+        .profile-img-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffc300;
+            display: block;
+            box-shadow: 0 0 20px rgba(255, 195, 0, 0.2);
+        }
+
+        /* --- GENERAL SECTIONS --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid #001d3d;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ffd60a;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- PROJECTS SECTION (CSS GRID) --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: #001d3d;
+            border: 1px solid #003566;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #ffc300;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #000814;
+            color: #ffc300;
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-pill {
+            background-color: #001d3d;
+            color: #ffc300;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #003566;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- CONTACT SECTION & FORM --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-top: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background-color: #001d3d;
+            border: 1px solid #003566;
+            color: #ffffff;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #ffc300;
+        }
+
+        .contact-form button {
+            background-color: #ffc300;
+            color: #000814;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: fit-content;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #ffd60a;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-description {
+                margin: 0 auto;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div id="name">DHIRAJ PAREEK</div>
+        <ul id="tabs">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO / ABOUT SECTION -->
+    <section id="about" class="hero">
+        <div class="hero-left">
+            <div class="typing-container">
+                <h1 class="typing-text">Hi, I'm Dhiraj Pareek</h1>
+            </div>
+            <p class="hero-description">
+                Passionate web developer building clean, responsive, and functional web experiences using modern HTML and CSS practices.
+            </p>
+        </div>
+
+        <div class="profile-img-container">
+            <img src="images/profile img portfolio.jpg" alt="Dhiraj Pareek" class="profile-img">
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Personal Portfolio</h3>
+                <p>A responsive developer portfolio featuring modern flexbox layouts and CSS animations.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Flexbox Layout Challenge</h3>
+                <p>Interactive web layout constructed purely with CSS Flexbox alignment principles.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS Flexbox</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">Flexbox</span>
+            <span class="skill-pill">CSS Grid</span>
+            <span class="skill-pill">Responsive Design</span>
+            <span class="skill-pill">Git & GitHub</span>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p style="color: #a0aec0; margin-bottom: 1rem;">Feel free to drop a message!</p>
+        <form class="contact-form" action="#" method="POST">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Dhiraj Pareek. Built with HTML & CSS ❤️</p>
+    </footer>
+
+</body>
+</html>
